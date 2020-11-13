@@ -1,8 +1,28 @@
-version: '2'
+version: '3'
 services:
   web:
     build: .
+    depends_on: 
+      - db
     ports:
-     - "5000:80"
+      - "8000:80"
     volumes:
-     - .:/var/www/html
+      - .:/var/www/html
+  
+  db:
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+    - ./mysql-dump:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: db_ucctest
+      MYSQL_USER: userdb
+      MYSQL_PASSWORD: passworddb
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8001:8080"
