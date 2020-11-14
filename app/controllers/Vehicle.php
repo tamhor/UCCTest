@@ -17,10 +17,11 @@ class Vehicle extends Controller
         $data = $this->model->get();
 
         if ($data > 0) {
-            echo json_encode([
-                'status' => 200,
-                'data' => $data,
-            ]);
+            // echo json_encode([
+            //     'status' => 200,
+            //     'data' => $data,
+            // ]);
+            echo json_encode($data);
         } else {
             echo json_encode([
                 'status' => 404,

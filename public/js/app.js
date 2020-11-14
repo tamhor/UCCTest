@@ -1,25 +1,26 @@
-'use strict';
-
-const e = React.createElement;
-
-class LikeButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { liked: false };
-  }
-
-  render() {
-    if (this.state.liked) {
-      return 'You liked this.';
+const Vehicles = {
+  data() {
+    return {
+      results: null,
+      submit: false
     }
+  },
 
-    return e(
-      'button',
-      { onClick: () => this.setState({ liked: true }) },
-      'Like'
-    );
+  mounted() {
+    this.load()
+  },
+
+  methods: {
+    load() { 
+      axios.get("http://localhost:8000/vehicle/api_get")
+      .then(response => {this.results = response.data})
+    },
+    add() {
+      axios.post('http://localhost:8000/vehicle/api_post', this.form).then(res => {
+          this.load()
+          this.form.name = ''
+      })
+    }
   }
 }
-
-const domContainer = document.querySelector('#like_button_container');
-ReactDOM.render(e(LikeButton), domContainer);
+Vue.createApp(Vehicles).mount('#list')
