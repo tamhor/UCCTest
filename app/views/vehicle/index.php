@@ -7,11 +7,16 @@
     <title>Vehicles || Undercurrent Capital Test</title>
 </head>
 
+<style>
+    body {
+        padding: 20vh;
+    }
+</style>
+
 <body>
-    <div class="container">
-        Hello
-        <?= $data[0] ?>
-    </div>
+    This Views is for MVC
+
+    <a href="../../public/index.php">React</a>
 </body>
 
 </html>

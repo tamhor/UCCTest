@@ -10,15 +10,15 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 CREATE TABLE `vehicles` (
   `id` int NOT NULL,
   `name` varchar(255) NOT NULL,
-  `engine_displacement` varchar(255) NOT NULL,
-  `engine_power` varchar(255) NOT NULL,
+  `engine_displacement` int NOT NULL,
+  `engine_power` int NOT NULL,
   `price` varchar(255) NOT NULL,
   `location` varchar(255) NOT NULL,
   `category_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 INSERT INTO `vehicles` (`id`, `name`, `engine_displacement`, `engine_power`, `price`, `location`, `category_id`) VALUES
-(1, 'Avanza', '1300', '1500', '160000000', 'Malang', 1);
+(1, 'Avanza', 1300, 1500, '160000000', 'Malang', 1);
 
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);

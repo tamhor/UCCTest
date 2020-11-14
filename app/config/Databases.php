@@ -9,6 +9,7 @@ class Databases
 
     private $dbh;
     private $stmt;
+    protected $table;
 
     public function __construct()
     {
@@ -28,6 +29,11 @@ class Databases
     public function query($query)
     {
         $this->stmt = $this->dbh->prepare($query);
+    }
+
+    public function execute()
+    {
+        $this->stmt->execute();
     }
 
     public function bind($param, $value, $type = null)
@@ -53,15 +59,14 @@ class Databases
         $this->stmt->bindValue($param, $value, $type);
     }
 
-    public function getAll()
+    public function get()
     {
-        $this->stmt->execute();
+        $this->execute();
         return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function single()
+    public function rowCount()
     {
-        $this->stmt->execute();
-        return $this->stmt->fetch(PDO::FETCH_ASSOC);
+        return $this->stmt->rowCount();
     }
 }

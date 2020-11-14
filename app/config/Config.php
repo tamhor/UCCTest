@@ -6,7 +6,7 @@
  * Example :
  * define('BASEURL', 'www.example.com');
  */
-define('BASEURL', $_SERVER['SERVER_NAME']);
+define('BASEURL', "http://" . $_SERVER['HTTP_HOST'] . '/src/');
 
 /**
  * Database Config

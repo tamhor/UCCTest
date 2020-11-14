@@ -2,14 +2,16 @@
 
 class App
 {
-    protected $controller = "Vehicle";
+    protected $controller = 'vehicle';
     protected $method = 'index';
     protected $params = [];
 
     public function __construct()
     {
         $url = $this->parseURL();
-
+        if ($url == NULL) {
+            $url = [$this->controller];
+        }
         if (file_exists($_SERVER['DOCUMENT_ROOT'] . 'app/controllers/' . ucfirst($this->controller) . '.php')) {
             $this->controller = $url[0];
             unset($url[0]);
@@ -34,7 +36,6 @@ class App
 
     public function parseURL()
     {
-
         if (isset($_GET['url'])) {
             $url = rtrim($_GET['url'], '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);

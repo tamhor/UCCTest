@@ -1,0 +1,8 @@
+.page {
+  height: 100vh;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(rgba(255, 222, 38, 0.6)), to(rgba(164, 135, 55, 0.6))), url(../images/bg.jpeg);
+  background-size: cover;
+  background-position: bottom;
+  position: relative;
+}
+/*# sourceMappingURL=style.css.map */
