@@ -16,7 +16,7 @@
 <body>
     This Views is for MVC
 
-    <a href="../../public/index.php">React</a>
+    <a href="../../public/index.php">Vue JS and Ajax</a>
 </body>
 
 </html>

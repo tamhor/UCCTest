@@ -23,7 +23,8 @@ class ApiModel
     public function get()
     {
         $this->header();
-        $this->db->query('SELECT vehicles.*, categories.name AS category FROM vehicles, categories WHERE vehicles.category_id = categories.id');
+        $this->db->query('SELECT vehicles.*, categories.name AS category FROM vehicles, categories
+        WHERE vehicles.category_id = categories.id');
         return $this->db->get();
     }
 }

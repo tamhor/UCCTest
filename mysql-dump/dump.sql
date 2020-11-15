@@ -5,6 +5,10 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`id`, `name`) VALUES
 (1, 'Car');
+INSERT INTO `categories` (`id`, `name`) VALUES
+(1, 'Truck');
+INSERT INTO `categories` (`id`, `name`) VALUES
+(1, 'Motorcycle');
 
 
 CREATE TABLE `vehicles` (

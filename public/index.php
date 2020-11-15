@@ -91,10 +91,13 @@
                             </div>
                             <div class="card-body">
                                 <p class="card-text">
-                                    {{res.engine_displacement}}
+                                    Engine Displacement : {{res.engine_displacement}} CC
                                 </p>
                                 <p class="card-text">
-                                    {{res.engine_power}}
+                                    Engine Power : {{res.engine_power}} HP
+                                </p>
+                                <p id="rupiah" data-a-sign="Rp. " data-a-dec="," data-a-sep="." class="card-text">
+                                    {{res.price}}
                                 </p>
                             </div>
                             <div class="card-footer">
