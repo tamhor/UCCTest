@@ -17,10 +17,6 @@ class Vehicle extends Controller
         $data = $this->model->get();
 
         if ($data > 0) {
-            // echo json_encode([
-            //     'status' => 200,
-            //     'data' => $data,
-            // ]);
             echo json_encode($data);
         } else {
             echo json_encode([
@@ -45,13 +41,7 @@ class Vehicle extends Controller
 
         if ($data != null) {
             $item->insert();
-            echo json_encode(
-                [
-                    'status' => 200,
-                    'message' => 'Vehicle create succesfully',
-                    'data' => $item,
-                ]
-            );
+            echo json_encode($item);
         } else {
             echo json_encode(
                 [

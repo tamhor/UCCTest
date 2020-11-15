@@ -10,8 +10,8 @@
 </head>
 
 <body>
-    <div class="page">
-        <div class="container py-5">
+    <div class="page" id="app">
+        <div class="container">
             <div class="media row">
                 <div class="col-md-4 order-md-12">
                     <div class="media-body">
@@ -19,17 +19,55 @@
                             <div class="card-body">
                                 <h4 class="card-title">Insert Vehicle</h4>
                                 <div class="card-text">
-                                    <form id="form" action="" method="post">
+                                    <form id="form" method="post">
+                                        <input type="hidden" id="id">
                                         <div class="field-wrapper">
-                                            <input ref="input" type="email" name="email" id="email">
-                                            <div class="field-placeholder"><span>Enter your email</span></div>
+                                            <input type="text" id="name" class="form-control" :class="{ 'is-invalid': isInvalid }" name="name" required>
+                                            <div class="field-placeholder">
+                                                <span>Name</span>
+                                            </div>
                                         </div>
                                         <div class="field-wrapper">
-                                            <input ref="input" type="password" name="password" id="password">
-                                            <div class="field-placeholder"><span>Enter your password</span></div>
+                                            <div class="form-inline">
+                                                <input type="number" id="numb" class="form-control" style="width: 70%;" :class="{ 'is-invalid': isInvalid }" required>
+                                                <div class="field-placeholder">
+                                                    <span>Engine Displacement</span>
+                                                </div>
+                                                <select class="form-control" name="unit" id="unit">
+                                                    <option selected value="none">Unit</option>
+                                                    <option value="l">L</option>
+                                                    <option value="cc">CC</option>
+                                                    <option value="ic">IC</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <input class="form-control" type="hidden" id="calculate" name="engine_displacement" readonly>
+                                        <div class="field-wrapper">
+                                            <input type="number" class="form-control" :class="{ 'is-invalid': isInvalid }" name="engine_power" id="engine_power" required>
+                                            <div class="field-placeholder">
+                                                <span>Engine Power</span>
+                                            </div>
+                                        </div>
+                                        <div class="field-wrapper">
+                                            <input type="text" id="price" class="form-control" :class="{ 'is-invalid': isInvalid }" name="price" required>
+                                            <div class="field-placeholder">
+                                                <span>Price</span>
+                                            </div>
+                                        </div>
+                                        <div class="field-wrapper">
+                                            <input type="text" id="location" class="form-control" :class="{ 'is-invalid': isInvalid }" name="location" required>
+                                            <div class="field-placeholder">
+                                                <span>Location</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <span>Category</span>
+                                            <select class="form-control" :class="{ 'is-invalid': isInvalid }" id="category_id" required>
+                                                <option v-for="cat in categories" :value="cat.id">{{ cat.name }}</option>
+                                            </select>
                                         </div>
                                         <div class="form-button">
-                                            <button type="button" class="btn btn-primary">Login</button>
+                                            <button type="submit" id="submit" class="btn btn-primary">Add</button>
                                         </div>
                                     </form>
                                 </div>
@@ -38,33 +76,45 @@
                     </div>
                 </div>
                 <div class="col-md-8 order-md-1">
-                    <div class="mt-5">
-                        <ul id="list">
-                            <li v-for="res in results">
-                                {{ res.name }}
-                            </li>
-                        </ul>
+                    <div class="card-columns mt-5" style="overflow-x: scroll; float-left; overflow-x:auto; height:80vh;">
+                        <div class="card" v-for="res in results">
+                            <div class="card-header">
+                                <h5 class="card-title">
+                                    {{res.name}}
+                                </h5>
+                                <p class="card-text">
+                                    <small class="text-muted">
+                                        {{res.category}}
+                                    </small>
+                                </p>
+
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    {{res.engine_displacement}}
+                                </p>
+                                <p class="card-text">
+                                    {{res.engine_power}}
+                                </p>
+                            </div>
+                            <div class="card-footer">
+                                <p class="card-text">
+                                    <small class="text-muted">
+                                        {{res.location}}
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-        <script>
-            $(".field-wrapper .field-placeholder").on("click", function() {
-                $(this).closest(".field-wrapper").find("input").focus();
-            });
-            $(".field-wrapper input").on("keyup", function() {
-                var value = $.trim($(this).val());
-                if (value) {
-                    $(this).closest(".field-wrapper").addClass("hasValue");
-                } else {
-                    $(this).closest(".field-wrapper").removeClass("hasValue");
-                };
-            });
-        </script>
-        <script src="js/vue.global.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script src="js/app.js"></script>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script src="js/vue.global.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
