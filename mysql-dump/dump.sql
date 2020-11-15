@@ -6,9 +6,9 @@ CREATE TABLE `categories` (
 INSERT INTO `categories` (`id`, `name`) VALUES
 (1, 'Car');
 INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'Truck');
+(2, 'Truck');
 INSERT INTO `categories` (`id`, `name`) VALUES
-(1, 'Motorcycle');
+(3, 'Motorcycle');
 
 
 CREATE TABLE `vehicles` (
@@ -31,7 +31,7 @@ ALTER TABLE `vehicles`
   ADD PRIMARY KEY (`id`);
 
 ALTER TABLE `categories`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 ALTER TABLE `vehicles`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;

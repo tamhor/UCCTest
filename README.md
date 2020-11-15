@@ -1,3 +1,14 @@
+## Installation
+
+'docker-compose up -d'
+
+Application running on port 8000
+
+'localhost:8000' this is view for MVC PHP
+
+'localhost:8000/public/' this view using VueJS and JQuery
+
+
 ## Story
 
 *The story below is fictional, created only for this exam's purpose.*

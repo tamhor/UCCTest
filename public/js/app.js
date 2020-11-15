@@ -71,7 +71,7 @@ const App = {
               console.log(data); 
           },
           error: function (xhr, textStatus, errorThrown) {  
-            console.log('Error in Operation');  
+            console.log(xhr.responseText);  
         } 
       });
       return false;
